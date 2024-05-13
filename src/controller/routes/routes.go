@@ -9,4 +9,5 @@ func Routes(r *gin.Engine, userController users.UserControllerInterface) {
 	r.GET("/version")
 	r.POST("/user", userController.CreateUser)
 	r.GET("/user/:id", userController.GetUser)
+	r.DELETE("/user/:id", userController.DeleteUser)
 }
