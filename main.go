@@ -1,6 +1,7 @@
 package main
 
 import (
+	"focus-finance/src/configuration/database"
 	"focus-finance/src/controller/routes"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -12,8 +13,11 @@ func main() {
 
 	}
 
+	DB := database.NewPostgresDB()
+	userController := initDependencies(DB)
+
 	router := gin.Default()
-	routes.Routes(router)
+	routes.Routes(router, userController)
 
 	if err := router.Run(":5000"); err != nil {
 

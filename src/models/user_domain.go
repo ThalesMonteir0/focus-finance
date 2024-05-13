@@ -1,11 +1,16 @@
 package models
 
+import (
+	"focus-finance/src/configuration/rest_err"
+	"golang.org/x/crypto/bcrypt"
+	"strings"
+)
+
 type userDomain struct {
-	id              int
-	name            string
-	email           string
-	password        string
-	confirmPassword string
+	id       int
+	name     string
+	email    string
+	password string
 }
 
 func (ud *userDomain) GetID() int {
@@ -23,6 +28,20 @@ func (ud *userDomain) GetEmail() string {
 func (ud *userDomain) GetPassword() string {
 	return ud.password
 }
-func (ud *userDomain) GetConfirmPassword() string {
-	return ud.confirmPassword
+func (ud *userDomain) SetEmailToUppercase() {
+	ud.email = strings.ToUpper(ud.email)
+}
+func (ud *userDomain) SetNameToUppercase() {
+	ud.name = strings.ToUpper(ud.name)
+}
+func (ud *userDomain) EncryptPassword() *rest_err.RestErr {
+	hashPassword, err := bcrypt.GenerateFromPassword([]byte(ud.GetPassword()), bcrypt.DefaultCost)
+	if err != nil {
+		err := rest_err.NewInternalServerError("unable encrypt password")
+		return err
+	}
+
+	ud.password = string(hashPassword)
+
+	return nil
 }

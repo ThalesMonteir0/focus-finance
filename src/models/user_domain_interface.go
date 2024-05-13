@@ -1,19 +1,22 @@
 package models
 
+import "focus-finance/src/configuration/rest_err"
+
 type UserDomainInterface interface {
 	GetID() int
 	SetID(int)
 	GetName() string
 	GetEmail() string
 	GetPassword() string
-	GetConfirmPassword() string
+	SetEmailToUppercase()
+	SetNameToUppercase()
+	EncryptPassword() *rest_err.RestErr
 }
 
-func NewUserDomain(name, email, password, confirmPassword string) UserDomainInterface {
+func NewUserDomain(name, email, password string) UserDomainInterface {
 	return &userDomain{
-		name:            name,
-		email:           email,
-		password:        password,
-		confirmPassword: confirmPassword,
+		name:     name,
+		email:    email,
+		password: password,
 	}
 }

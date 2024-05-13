@@ -3,10 +3,11 @@ package user_service
 import (
 	"focus-finance/src/configuration/rest_err"
 	"focus-finance/src/models"
+	"focus-finance/src/models/repository"
 )
 
 type userService struct {
-	repository string
+	repository repository.UserRepositoryInterface
 }
 
 type UserServiceInterface interface {
@@ -16,7 +17,7 @@ type UserServiceInterface interface {
 	GetUserByID(int) (models.UserDomainInterface, *rest_err.RestErr)
 }
 
-func NewUserService(repository string) UserServiceInterface {
+func NewUserService(repository repository.UserRepositoryInterface) UserServiceInterface {
 	return &userService{
 		repository: repository,
 	}
