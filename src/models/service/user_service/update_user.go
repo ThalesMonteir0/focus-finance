@@ -5,6 +5,13 @@ import (
 	"focus-finance/src/models"
 )
 
-func (us *userService) UpdateUser(models.UserDomainInterface) *rest_err.RestErr {
+func (us *userService) UpdateUser(userDomain models.UserDomainInterface, userID int) *rest_err.RestErr {
+	userDomain.SetNameToUppercase()
+	userDomain.SetEmailToUppercase()
+
+	if err := us.repository.UpdateUserRepository(userDomain, userID); err != nil {
+		return err
+	}
+
 	return nil
 }

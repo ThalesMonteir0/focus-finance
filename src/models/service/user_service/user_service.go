@@ -12,7 +12,7 @@ type userService struct {
 
 type UserServiceInterface interface {
 	CreateUser(models.UserDomainInterface) (models.UserDomainInterface, *rest_err.RestErr)
-	UpdateUser(models.UserDomainInterface) *rest_err.RestErr
+	UpdateUser(models.UserDomainInterface, int) *rest_err.RestErr
 	DeleteUser(int) *rest_err.RestErr
 	GetUserByID(int) (models.UserDomainInterface, *rest_err.RestErr)
 }
