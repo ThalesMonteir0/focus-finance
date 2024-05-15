@@ -2,11 +2,11 @@ package models
 
 type movementDomain struct {
 	id          int
-	name        string
-	value       int64
+	value       float64
 	description string
 	operationID int
 	typeID      int
+	userID      int
 }
 
 func (md *movementDomain) GetID() int {
@@ -15,16 +15,10 @@ func (md *movementDomain) GetID() int {
 func (md *movementDomain) SetID(id int) {
 	md.id = id
 }
-func (md *movementDomain) GetName() string {
-	return md.name
-}
-func (md *movementDomain) SetName(name string) {
-	md.name = name
-}
-func (md *movementDomain) GetValue() int64 {
+func (md *movementDomain) GetValue() float64 {
 	return md.value
 }
-func (md *movementDomain) SetValue(value int64) {
+func (md *movementDomain) SetValue(value float64) {
 	md.value = value
 }
 func (md *movementDomain) GetDesc() string {
@@ -44,4 +38,10 @@ func (md *movementDomain) GetTypeID() int {
 }
 func (md *movementDomain) SetTypeID(typeID int) {
 	md.typeID = typeID
+}
+func (md *movementDomain) GetUserID() int {
+	return md.userID
+}
+func (md *movementDomain) SetUserID(userID int) {
+	md.userID = userID
 }

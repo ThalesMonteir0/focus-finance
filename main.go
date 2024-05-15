@@ -14,10 +14,10 @@ func main() {
 	}
 
 	DB := database.NewPostgresDB()
-	userController := initDependencies(DB)
+	userController, movementController := initDependencies(DB)
 
 	router := gin.Default()
-	routes.Routes(router, userController)
+	routes.Routes(router, userController, movementController)
 
 	if err := router.Run(":5000"); err != nil {
 
