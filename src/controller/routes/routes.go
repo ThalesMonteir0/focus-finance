@@ -12,6 +12,6 @@ func Routes(r *gin.Engine, userController users.UserControllerInterface, movemen
 	r.DELETE("/user/:id", userController.DeleteUser)
 	r.PUT("/user/:id", userController.EditUser)
 
-	r.GET("/movement", movementController.GetMovement)
+	r.GET("/movement/:userID", movementController.GetMovement)
 	r.POST("/movement", movementController.CreateMovement)
 }

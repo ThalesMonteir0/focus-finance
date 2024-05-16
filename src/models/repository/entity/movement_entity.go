@@ -7,6 +7,9 @@ type Movement struct {
 	Value       float64
 	Description string
 	UserID      int
+	User        User
 	TypeID      int
+	Type        Type
 	OperationID int
+	Operation   Operation
 }

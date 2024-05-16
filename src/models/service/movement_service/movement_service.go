@@ -11,8 +11,8 @@ type movementService struct {
 }
 
 type MovementServiceInterface interface {
-	GetMovements() ([]models.MovementDomainInterface, *rest_err.RestErr)
-	CreateMovement(domainInterface models.MovementDomainInterface) *rest_err.RestErr
+	GetMovements(models.MovementDomainInterface) ([]models.MovementDomainInterface, *rest_err.RestErr)
+	CreateMovement(models.MovementDomainInterface) *rest_err.RestErr
 }
 
 func NewMovementService(repository repository.MovementRepositoryInterface) MovementServiceInterface {

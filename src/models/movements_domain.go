@@ -1,12 +1,14 @@
 package models
 
 type movementDomain struct {
-	id          int
-	value       float64
-	description string
-	operationID int
-	typeID      int
-	userID      int
+	id            int
+	value         float64
+	description   string
+	operationID   int
+	typeID        int
+	userID        int
+	typeName      string
+	operationName string
 }
 
 func (md *movementDomain) GetID() int {
@@ -44,4 +46,17 @@ func (md *movementDomain) GetUserID() int {
 }
 func (md *movementDomain) SetUserID(userID int) {
 	md.userID = userID
+}
+func (md *movementDomain) SetOperationName(operationName string) {
+	md.operationName = operationName
+}
+func (md *movementDomain) GetOperationName() string {
+	return md.operationName
+}
+
+func (md *movementDomain) SetTypeName(typeName string) {
+	md.typeName = typeName
+}
+func (md *movementDomain) GetTypeName() string {
+	return md.typeName
 }

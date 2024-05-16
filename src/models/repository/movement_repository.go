@@ -11,7 +11,7 @@ type movementRepository struct {
 }
 
 type MovementRepositoryInterface interface {
-	GetMovements() ([]models.MovementDomainInterface, *rest_err.RestErr)
+	GetMovements(models.MovementDomainInterface) ([]models.MovementDomainInterface, *rest_err.RestErr)
 	InsertMovement(models.MovementDomainInterface) *rest_err.RestErr
 }
 

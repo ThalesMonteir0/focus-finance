@@ -13,6 +13,10 @@ type MovementDomainInterface interface {
 	SetTypeID(int)
 	GetUserID() int
 	SetUserID(int)
+	SetOperationName(string)
+	SetTypeName(string)
+	GetOperationName() string
+	GetTypeName() string
 }
 
 func NewMovementsDomain(description string, value float64, operationID, typeID, userID int) MovementDomainInterface {
