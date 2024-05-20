@@ -14,7 +14,6 @@ func TestUserRepository_FindUserByID(t *testing.T) {
 	expectedSQL := "SELECT \\* FROM \"users\" WHERE \"users\"\\.\"id\" = \\$1 AND \"users\"\\.\"deleted_at\" IS NULL ORDER BY \"users\"\\.\"id\" LIMIT \\$2"
 	rows := mock.NewRows([]string{"id", "name", "email", "password", "deleted_at", "updated_at"}).
 		AddRow(1, "TESTE", "TESTE@TESTE.COM", "123456", time.Now(), time.Now())
-
 	mock.ExpectQuery(expectedSQL).WillReturnRows(rows)
 
 	userDomain, err := userRepo.FindUserByID(1)
