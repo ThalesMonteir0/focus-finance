@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"errors"
 	"focus-finance/src/configuration/database"
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/stretchr/testify/assert"
@@ -19,6 +20,16 @@ func TestUserRepository_DeleteUserRepository(t *testing.T) {
 		err := userRepo.DeleteUserRepository(1)
 
 		assert.Nil(mt, err)
+	})
+
+	t.Run("user_deleted_error", func(mt *testing.T) {
+		mock.ExpectBegin()
+		mock.ExpectExec(expectedSQL).WithArgs(1).WillReturnError(errors.New("delete failed"))
+		mock.ExpectRollback()
+
+		err := userRepo.DeleteUserRepository(1)
+
+		assert.NotNil(mt, err)
 	})
 
 }
