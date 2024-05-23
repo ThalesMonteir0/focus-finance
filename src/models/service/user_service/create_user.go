@@ -6,7 +6,7 @@ import (
 )
 
 func (us *userService) CreateUser(userDomain models.UserDomainInterface) (models.UserDomainInterface, *rest_err.RestErr) {
-	if _, err := us.repository.FindUserByEmail(userDomain.GetEmail()); err == nil {
+	if user, _ := us.repository.FindUserByEmail(userDomain.GetEmail()); user != nil {
 		err := rest_err.NewBadRequestError("email already exists")
 		return nil, err
 	}
