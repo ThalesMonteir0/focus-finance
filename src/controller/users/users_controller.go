@@ -14,6 +14,7 @@ type UserControllerInterface interface {
 	DeleteUser(*gin.Context)
 	EditUser(*gin.Context)
 	GetUser(*gin.Context)
+	UserLogin(*gin.Context)
 }
 
 func NewUserController(service user_service.UserServiceInterface) UserControllerInterface {

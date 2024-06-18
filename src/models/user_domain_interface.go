@@ -11,6 +11,7 @@ type UserDomainInterface interface {
 	SetEmailToUppercase()
 	SetNameToUppercase()
 	EncryptPassword() *rest_err.RestErr
+	GenerateToken() (string, *rest_err.RestErr)
 }
 
 func NewUserDomain(name, email, password string) UserDomainInterface {

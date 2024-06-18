@@ -15,6 +15,7 @@ type UserServiceInterface interface {
 	UpdateUser(models.UserDomainInterface, int) *rest_err.RestErr
 	DeleteUser(int) *rest_err.RestErr
 	GetUserByID(int) (models.UserDomainInterface, *rest_err.RestErr)
+	LoginUser(models.UserLoginDomainInterface) (string, *rest_err.RestErr)
 }
 
 func NewUserService(repository repository.UserRepositoryInterface) UserServiceInterface {
